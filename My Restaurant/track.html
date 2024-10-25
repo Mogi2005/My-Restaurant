@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://t3.ftcdn.net/jpg/05/79/48/54/360_F_579485400_8jSrBgNQP1BWUOjWujmRS79YJmzQv6fw.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tracking-container {
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.track-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.track-btn:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
+
+#order-status {
+    margin-top: 20px;
+}
+
+    </style>
+<body>
+    <div class="tracking-container">
+        <h1>Track Your Order</h1>
+        <form id="tracking-form">
+            <label for="order-number">Enter Your Order Number:</label>
+            <input type="text" id="order-number" name="order-number" placeholder="Order Number" required>
+
+            <button type="submit" class="track-btn">Track Order</button>
+        </form>
+
+        <div id="order-status" class="hidden">
+            <h2>Order Status</h2>
+            <p><strong>Order Number:</strong> <span id="order-id"></span></p>
+            <p><strong>Status:</strong> <span id="status-text"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    
+</script>
+</html>

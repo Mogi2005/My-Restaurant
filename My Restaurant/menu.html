@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/premium-photo/coffee-shop-with-blurred-effect_960396-633042.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-container {
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.menu-categories {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.menu-btn:hover {
+    background-color: #45a049;
+}
+
+#menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.menu-item p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+</style>
+<body>
+    <div class="menu-container">
+        <h1>Menu</h1>
+        <div class="menu-categories">
+            <button class="menu-btn" onclick="showCategory('starters')">Starters</button>
+            <button class="menu-btn" onclick="showCategory('main-courses')">Main Courses</button>
+            <button class="menu-btn" onclick="showCategory('desserts')">Desserts</button>
+        </div>
+        <div id="menu-items">
+            <!-- Menu items will be dynamically displayed here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+  const menu = {
+    starters: [
+        { name: 'Bruschetta', description: 'Grilled bread with tomatoes, garlic, and basil' },
+        { name: 'stuffed Mushrooms', description: 'Toasted bread topped with mushrooms' },
+        { name: 'Spring Rolls', description: 'Crispy rolls filled with vegetables' },
+        { name: 'Paneer Tikka', description: 'Grilled cottage cheese cubes with spices' },
+        { name: 'Chicken Wings', description: 'Spicy or BBQ-flavoured chicken wings' },
+        { name: 'Chicken satay', description: 'Grilled Skewers of chicken with sauce' },
+        { name: 'Fish Tacos', description: 'Soft tacos with spiced fish and salsa' }
+    ],
+    'main-courses':[
+        { name: 'Vegetable Biriyani', description: 'Aromatic rice dish with mixed vegetables' },
+        { name: 'Paneer Butter Masala', description: 'Cheese cooked with creamy tomato sauce' },
+        { name: 'Chicken Biriyani', description: 'Spicy basmati rice with marinated chicken' },
+        { name: 'Grilled salmon', description: 'Fresh salmon fillet grilled with lemon butter sauce' },
+        { name: 'Chicken Rice', description: 'Served with rice with chicken' },
+        { name: 'Grilled Chicken', description: 'Served with grilled and spicy chicken' },
+        { name: 'Chicken Pasta', description: 'Pasta with eggs, cheese, pancetta, and pepper' }
+    ],
+    desserts: [
+        { name: 'chocolate cake', description: 'rich and moist chcolate cake' },
+        { name: 'Apple pie', description: 'American pie with spiced apple filling' },
+        { name: 'Brownies', description: 'Dense, fudgy chocolate squares, sometimes with nuts or a drizzle of caramel.' },
+        { name: 'Tiramisu', description: 'Coffee-flavored Italian dessert' },
+        { name: 'Icecream Sundae', description: 'Vanilla, chocolate, or other flavors of ice cream topped with syrup' },
+        { name: 'Panna Cotta', description: 'Italian chilled cream dessert, often served with berries or caramel' },
+        { name: 'Cheesecake', description: 'Creamy cheesecake with a graham cracker crust' }
+    ]
+};
+
+function showCategory(category) {
+    const menuItemsDiv = document.getElementById('menu-items');
+    menuItemsDiv.innerHTML = ''; // Clear existing items
+
+    menu[category].forEach(item => {
+        const menuItem = document.createElement('div');
+        menuItem.classList.add('menu-item');
+        
+        const itemName = document.createElement('h3');
+        itemName.textContent = item.name;
+        
+        const itemDesc = document.createElement('p');
+        itemDesc.textContent = item.description;
+
+        menuItem.appendChild(itemName);
+        menuItem.appendChild(itemDesc);
+        menuItemsDiv.appendChild(menuItem);
+    });
+}
+
+// Display starters by default when the page loads
+window.onload = function() {
+    showCategory('starters');
+};
+
+</script>
+</html>
+

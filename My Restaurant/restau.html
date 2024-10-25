@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant List</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #141212;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f7f5f5;
+            margin-bottom: 20px;
+        }
+
+        .restaurant-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+            justify-content: center;
+        }
+
+        .restaurant-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-card:hover {
+            transform: scale(1.50);
+        }
+
+        .restaurant-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .restaurant-card .info {
+            padding: 15px;
+        }
+
+        .restaurant-card h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .restaurant-card p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .restaurant-card .location {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .restaurant-card .rating {
+            font-size: 1.2em;
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Restaurants</h1>
+        <div class="restaurant-list">
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbEjm3gmJ2A4OoJarLADkyL9Uzd5dy3dVxA&s" alt="Restaurant 1">
+                <div class="info">
+                    <h2>Taj Restaurant</h2>
+                    <p class="location">Palaiyaplayam,Erode.</p>
+                    <p class="rating">★★★★☆</p>
+                    
+                </div>
+            </div>
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card">
+                <img src="https://content.jdmagicbox.com/comp/erode/i5/9999px424.x424.210929202927.c6i5/catalogue/snackers-republic-erode-collectorate-erode-arabic-delivery-restaurants-bubcu6jlc4-250.jpg" alt="Restaurant 2">
+                <div class="info">
+                    <h2>Snackers Republic</h2>
+                    <p class="location">Near Collector Office ,Erode</p>
+                    <p class="rating">★★★☆☆</p>
+                    
+
+                    </div>
+            </div>
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7qHAV_66iaIKzzN-mwY7urRNMbDDi7YmsQ&s" alt="Restaurant 3">
+                <div class="info">
+                    <h2>A M Biriyani</h2>
+                    <p class="location">Erode</p>
+                    <p class="rating">★★★★★</p>
+            
+                </div>
+            </div><br><br>
+            <div class="restaurant-card">
+                <img src="https://img.restaurantguru.com/r4b1-Maman-Briyani-Stall-Thindal-facade.jpg" alt="Restaurant 3">
+                <div class="info">
+                    <h2>Maman Biriyani</h2>
+                    <p class="location">Thindal,Erode</p>
+                    <p class="rating">★★★★★</p>
+                    
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvO8wBgJqz98Cf4_YEiPVq3sbfX_kW5AY0OA&s" alt="Restaurant 3">
+                <div class="info">
+                    <h2>Planet B</h2>
+                    <p class="location">Erode</p>
+                    <p class="rating">★★★★</p>
+                    
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://content.jdmagicbox.com/comp/madurai/n8/0452px452.x452.230517133008.r3n8/catalogue/aasife-biriyani-madurai-q2j0be1fgw.jpg" alt="Restaurant 3">
+                <div class="info">
+                    <h2>Aasif Biriyani</h2>
+                    <p class="location">Erode</p>
+                    <p class="rating">★★★★★</p>
+                    
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://content.jdmagicbox.com/comp/erode/f1/9999px424.x424.130904154835.m4f1/catalogue/ice-cube--thindal-erode-erode-thermocole-manufacturers-otw35.jpg" alt="Restaurant 3">
+                <div class="info">
+                    <h2>Ice Cube</h2>
+                    <p class="location">Palayapalaym,Erode</p>
+                    <p class="rating">★★★★★</p>
+                    
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUqtVQJLiirU3nbRjOIiE1msq_OuaVEih8Kw&s" alt="Restaurant 3">
+                <div class="info">
+                    <h2>RR Biriyani</h2>
+                    <p class="location">Solar,Erode</p>
+                    <p class="rating">★★★★★</p>
+                    
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQnKf2yf7sKlZgm-hTpmrdQekO-wTXR_FJTA&s" alt="Restaurant 3">
+                <div class="info">
+                    <h2>Kongu Parotta</h2>
+                    <p class="location">Near Erode GH</p>
+                    <p class="rating">★★★★★</p>
+                    
+                </div>
+            </div>
+
+            <!-- Add more restaurant cards as needed -->
+        </div>
+    </div>
+</body>
+</html>

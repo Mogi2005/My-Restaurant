@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Restaurant Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/407/764/990/restaurant-cafes-urban-city-wallpaper-preview.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.admin-container {
+    max-width: 900px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.admin-section {
+    margin-bottom: 40px;
+}
+
+.admin-section h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li .btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+li .btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+</style>
+<body>
+    <div class="admin-container">
+        <h1>Admin Panel</h1>
+
+        <!-- Section to Add Restaurants -->
+        <div class="admin-section">
+            <h2>Add Restaurant</h2>
+            <form id="restaurant-form">
+                <label for="restaurant-name">Restaurant Name:</label>
+                <input type="text" id="restaurant-name" placeholder="Enter restaurant name" required>
+                
+                <label for="restaurant-location">Location:</label>
+                <input type="text" id="restaurant-location" placeholder="Enter restaurant location" required>
+                
+                <button type="submit" class="btn">Add Restaurant</button>
+            </form>
+
+            <h3>Current Restaurants</h3>
+            <ul id="restaurant-list">
+                <!-- Restaurants will be listed here -->
+            </ul>
+        </div>
+
+        <!-- Section to Manage Orders -->
+        <div class="admin-section">
+            <h2>Manage Orders</h2>
+            <ul id="order-list">
+                <!-- Orders will be displayed here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    // Mock list of orders
+const orders = [
+    { id: 1, restaurant: 'Kongu Parotta', customer: 'Ram', status: 'Pending' },
+    { id: 2, restaurant: 'RR Biriyani', customer: 'Ashok', status: 'Delivered' },
+    { id: 3, restaurant: 'Snackers', customer: 'Divya', status: 'Preparing' },
+];
+
+// Function to display restaurants
+function displayRestaurants() {
+    const restaurantList = document.getElementById('restaurant-list');
+    restaurantList.innerHTML = ''; // Clear list
+
+    const storedRestaurants = JSON.parse(localStorage.getItem('restaurants')) || [];
+    
+    storedRestaurants.forEach((restaurant, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${restaurant.name} - ${restaurant.location}`;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = () => deleteRestaurant(index);
+
+        li.appendChild(deleteBtn);
+        restaurantList.appendChild(li);
+    });
+}
+
+// Function to add a new restaurant
+document.getElementById('restaurant-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('restaurant-name').value;
+    const location = document.getElementById('restaurant-location').value;
+
+    const newRestaurant = { name, location };
+
+    const storedRestaurants = JSON.parse(localStorage.getItem('restaurants')) || [];
+    storedRestaurants.push(newRestaurant);
+
+    localStorage.setItem('restaurants', JSON.stringify(storedRestaurants));
+
+    // Reset form and update restaurant list
+    document.getElementById('restaurant-form').reset();
+    displayRestaurants();
+});
+
+// Function to delete a restaurant
+function deleteRestaurant(index) {
+    const storedRestaurants = JSON.parse(localStorage.getItem('restaurants')) || [];
+    storedRestaurants.splice(index, 1);
+    localStorage.setItem('restaurants', JSON.stringify(storedRestaurants));
+    displayRestaurants();
+}
+
+// Function to display orders
+function displayOrders() {
+    const orderList = document.getElementById('order-list');
+    orderList.innerHTML = ''; // Clear list
+
+    orders.forEach(order => {
+        const li = document.createElement('li');
+        li.textContent = `Order #${order.id} - ${order.restaurant} - ${order.customer} (${order.status})`;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = () => deleteOrder(order.id);
+
+        li.appendChild(deleteBtn);
+        orderList.appendChild(li);
+    });
+}
+
+// Function to delete an order
+function deleteOrder(orderId) {
+    const orderIndex = orders.findIndex(order => order.id === orderId);
+    if (orderIndex > -1) {
+        orders.splice(orderIndex, 1);
+        displayOrders();
+    }
+}
+
+// Initialize page
+window.onload = function() {
+    displayRestaurants();
+    displayOrders();
+};
+
+</script>
+</html>
